@@ -113,6 +113,9 @@
 ### [2025-06-15]
 - [СДЕЛАНО] `main.tsx` обёрнут в `QueryClientProvider`, создан `QueryClient`
 
+### [2025-06-16]
+- [СДЕЛАНО] Добавлены `ReactQueryDevtools` в `main.tsx` для режима разработки
+
 ---
 
 ## Инструкция для Codex/OpenAI
