@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Tabs from './components/Tabs';
+
 import Button from './components/Button';
 import CreateCouponModal from './components/CreateCouponModal';
 import CreateOfferModal from './components/CreateOfferModal';
@@ -8,6 +9,7 @@ export default function AdminPanel() {
   const [tab, setTab] = useState<'coupons' | 'offers' | 'users' | 'subscriptions' | 'newsletter'>('coupons');
   const [couponOpen, setCouponOpen] = useState(false);
   const [offerOpen, setOfferOpen] = useState(false);
+
 
   const items = [
     { label: 'Coupons', value: 'coupons' },
@@ -20,7 +22,7 @@ export default function AdminPanel() {
   return (
     <div className="max-w-screen-lg mx-auto p-4">
       <Tabs items={items} value={tab} onChange={setTab} />
-
+      
       {tab === 'coupons' && (
         <div className="space-y-4">
           <Button onClick={() => setCouponOpen(true)}>Create Coupon</Button>
@@ -34,6 +36,7 @@ export default function AdminPanel() {
           <CreateOfferModal isOpen={offerOpen} onClose={() => setOfferOpen(false)} />
         </div>
       )}
+
 
       {tab === 'users' && <div>Users content</div>}
       {tab === 'subscriptions' && <div>Subscriptions content</div>}
