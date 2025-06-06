@@ -29,3 +29,12 @@
   ```bash
   sudo journalctl -u nginx.service
   ```
+
+## Логи тестов
+
+- Результаты выполнения тестов можно сохранять в `logs/test.log`:
+  ```bash
+  mkdir -p logs
+  npm test > logs/test.log 2>&1
+  ```
+- Отчёт удобно смотреть командой `tail -f logs/test.log`.
