@@ -33,3 +33,21 @@
 - Update frontend UI to include Telegram login option
 - Add subscription purchase page
 - Create admin dashboard for payment approvals
+# Development Checklist  – XRAYGUI
+_Последнее обновление: 2025-06-06_
+
+## :rocket:  Critical-Fixes (блокируют запуск)
+
+- [ ] **Wrap root in QueryClientProvider**  
+  `apps/frontend/src/main.tsx` (и любые альтернативные entry-points).  
+  Без этого React Query падает: `No QueryClient set`.
+
+- [ ] **Fail-safe Error Boundary**  
+  Добавить компонент‐обёртку, выводящий UI-ошибку вместо «белого листа».
+
+- [ ] **`.env` sanity**  
+  - `VITE_API_URL` у фронта  
+  - `DATABASE_URL` / `PORT` у бэка  
+  - Пример-шаблон `.env.example` обновить.
+
+- [ ] **Prisma migrations**  
