@@ -40,6 +40,14 @@
 | components/Badge.tsx  | Бейдж для статусов |
 | components/Navbar.tsx | Навигационная панель с NavLink |
 | components/Logo.tsx   | Логотип приложения |
+| components/PromoCodes.tsx | Поле ввода промокода с кнопкой |
+| components/Divider.tsx | Разделитель для секций |
+| components/SectionTitle.tsx | Заголовок раздела с подзаголовком |
+| components/Modal.tsx | Обёртка модального окна на базе HeadlessUI |
+| components/CreateCouponModal.tsx | Модал создания купона |
+| components/CreateOfferModal.tsx | Модал создания предложения |
+| ProfilePage.tsx | Страница профиля пользователя |
+| AdminPanel.tsx | Админ-панель с табами |
 | apps/frontend/src/index.css | Tailwind стили и базовые правила |
 | tailwind.config.cjs   | Конфигурация Tailwind |
 | postcss.config.js     | Настройки PostCSS и autoprefixer |
@@ -139,6 +147,12 @@
 - [СДЕЛАНО] Подключен Tailwind через PostCSS и настроена sci-fi тема
 - [СДЕЛАНО] Созданы компоненты Card, Button, Tabs и Badge
 - [СДЕЛАНО] Добавлен Navbar с NavLink и Logo
+
+### [2025-06-20]
+- [СДЕЛАНО] Добавлены компоненты PromoCodes, Divider, Modal и SectionTitle
+- [СДЕЛАНО] Созданы страницы ProfilePage и AdminPanel
+- [СДЕЛАНО] Удалён устаревший CSS из theme.css, иконки и лейаут переведены на Tailwind
+- [НОВАЯ ЗАДАЧА] UI Polish Round 2 (Promo, Profile, Admin, Modals)
 
 ---
 

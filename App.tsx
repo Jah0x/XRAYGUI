@@ -41,6 +41,7 @@ import Button from "~/components/Button";
 import Card from "~/components/Card";
 import Badge from "~/components/Badge";
 import Navbar from "~/components/Navbar";
+import PromoCodes from "~/components/PromoCodes";
 import {
   CardContent,
   CardDescription,
@@ -97,32 +98,6 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
 
 // Landing page with login/registration
 // Promo Code Input Component
-function PromoCodeInput({ onApply }: { onApply: (code: string) => void }) {
-  const [promoCode, setPromoCode] = useState("");
-
-  return (
-    <div className="flex space-x-2 mt-4">
-      <Input
-        placeholder="Enter promo code"
-        value={promoCode}
-        onChange={(e) => setPromoCode(e.target.value)}
-        className="flex-1"
-      />
-      <Button
-        onClick={() => {
-          if (promoCode.trim()) {
-            onApply(promoCode.trim());
-            setPromoCode("");
-          }
-        }}
-        disabled={!promoCode.trim()}
-      >
-        Apply
-      </Button>
-    </div>
-  );
-}
-
 function LandingPage() {
   const auth = useAuth();
   const [activeTab, setActiveTab] = useState<string>("login");
@@ -163,8 +138,8 @@ function LandingPage() {
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <div className="logo-container justify-center mb-6">
-            <Shield className="h-6 w-6 logo-icon" />
+          <div className="flex items-center gap-2 font-bold text-xl justify-center mb-6">
+            <Shield className="h-6 w-6 text-primary" />
             <span>X-Ray Core VPN</span>
           </div>
           <CardTitle className="text-2xl text-center">Welcome back</CardTitle>
@@ -206,7 +181,7 @@ function LandingPage() {
                     Have a promo code?
                   </span>
                 </div>
-                <PromoCodeInput
+                <PromoCodes
                   onApply={(code) => {
                     setPromoCode(code);
                     applyPromoMutation.mutate({ code });
@@ -246,7 +221,7 @@ function LandingPage() {
                     Have a promo code?
                   </span>
                 </div>
-                <PromoCodeInput
+                <PromoCodes
                   onApply={(code) => {
                     setPromoCode(code);
                     applyPromoMutation.mutate({ code });
@@ -1293,7 +1268,7 @@ function Dashboard() {
                       </p>
                     </div>
                     <div
-                      className={`status-badge status-${subscription.status.toLowerCase()}`}
+                      className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${subscription.status==="active"?"bg-success/10 text-success":subscription.status==="expired"?"bg-destructive/10 text-destructive":"bg-warning/10 text-warning"}`}
                     >
                       {subscription.status.charAt(0).toUpperCase() +
                         subscription.status.slice(1)}
@@ -1430,8 +1405,8 @@ function Layout({ children }: { children: React.ReactNode }) {
       <footer className="border-t py-6 mt-auto">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="logo-container mb-4 md:mb-0">
-              <Shield className="h-4 w-4 logo-icon" />
+            <div className="flex items-center gap-2 font-bold mb-4 md:mb-0">
+              <Shield className="h-4 w-4 text-primary" />
               <span className="text-sm">X-Ray Core VPN</span>
             </div>
             <div className="flex items-center space-x-4">

@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export function Tabs({ tabs, initial = 0 }: { tabs: { label: string; content: React.ReactNode }[]; initial?: number }) {
-  const [active, setActive] = useState(initial);
+export default function Tabs({ items, value, onChange }: { items: { label: string; value: string }[]; value: string; onChange: (v: string) => void }) {
   return (
-    <div>
-      <div className="flex border-b border-primary mb-4">
-        {tabs.map((t, i) => (
+    <div className="mb-4">
+      <div className="flex border-b border-white/10">
+        {items.map((item) => (
           <button
-            key={t.label}
-            onClick={() => setActive(i)}
-            className={`px-4 py-2 -mb-px ${active === i ? 'border-b-2 border-primary text-primary' : ''}`}
+            key={item.value}
+            onClick={() => onChange(item.value)}
+            className={`px-4 py-2 rounded-t-md ${value === item.value ? 'bg-primary/10 ring-1 ring-primary' : 'hover:bg-white/5'}`}
           >
-            {t.label}
+            {item.label}
           </button>
         ))}
       </div>
-      <div>{tabs[active]?.content}</div>
     </div>
   );
 }

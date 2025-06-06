@@ -34,6 +34,7 @@
 - Update frontend UI to include Telegram login option
 - Add subscription purchase page
 - Create admin dashboard for payment approvals
+- UI Polish Round 2 (Promo, Profile, Admin, Modals)
 # Development Checklist  – XRAYGUI
 _Последнее обновление: 2025-06-06_
 
