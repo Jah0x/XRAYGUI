@@ -30,6 +30,15 @@
   sudo journalctl -u nginx.service
   ```
 
+## Логи сборки
+
+- Сохраняйте вывод `npm run build` в файл `logs/build.log`, чтобы отследить возможные ошибки сборки:
+  ```bash
+  mkdir -p logs
+  npm run build > logs/build.log 2>&1
+  ```
+- Прогресс можно просмотреть командой `tail -f logs/build.log`.
+
 ## Логи тестов
 
 - Результаты выполнения тестов можно сохранять в `logs/test.log`:
