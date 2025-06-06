@@ -1,68 +1,90 @@
-/* Basic project theme */
-:root {
-  --color-primary: #3b82f6;
-  --color-success: #22c55e;
-  --color-destructive: #ef4444;
-  --color-muted: #6b7280;
-  --background-color: #f9fafb;
-}
-
-body {
-  font-family: system-ui, sans-serif;
-  background-color: var(--background-color);
-  color: #111;
-  margin: 0;
-  line-height: 1.5;
-}
-
-.container {
-  max-width: 1024px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1rem;
+layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+    --success: 142.1 76.2% 36.3%;
+    --success-foreground: 355.7 100% 97.3%;
+    --warning: 38 92.7% 50.2%;
+    --warning-foreground: 355.7 100% 97.3%;
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    --success: 142.1 70.6% 45.3%;
+    --success-foreground: 144.9 80.4% 10%;
+    --warning: 48 96.5% 53.9%;
+    --warning-foreground: 31 92% 17.5%;
+  }
 }
 
 .status-badge {
-  padding: 2px 8px;
+  display: inline-flex;
+  align-items: center;
   border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 500;
 }
+
 .status-active {
-  background-color: var(--color-success);
-  color: #fff;
+  background-color: hsl(var(--success) / 0.2);
+  color: hsl(var(--success));
 }
+
 .status-expired {
-  background-color: var(--color-destructive);
-  color: #fff;
-}
-.status-pending {
-  background-color: var(--color-muted);
-  color: #fff;
+  background-color: hsl(var(--destructive) / 0.2);
+  color: hsl(var(--destructive));
 }
 
-button {
-  background-color: var(--color-primary);
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
+.status-suspended {
+  background-color: hsl(var(--warning) / 0.2);
+  color: hsl(var(--warning));
 }
 
-input,
-select,
-textarea {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
 }
 
-.text-muted-foreground {
-  color: var(--color-muted);
-}
-
-.bg-muted {
-  background-color: var(--color-muted);
-  color: #fff;
+.logo-icon {
+  color: hsl(var(--primary));
 }
