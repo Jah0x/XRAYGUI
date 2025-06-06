@@ -47,3 +47,9 @@
   npm test > logs/test.log 2>&1
   ```
 - Отчёт удобно смотреть командой `tail -f logs/test.log`.
+
+## Логи React Query
+
+- React Query выводит ошибки и предупреждения в консоль браузера.
+- При разработке можно перенаправлять вывод `npm run dev` в `logs/dev.log`, чтобы сохранять эти сообщения.
+- Для более подробной отладки установите `@tanstack/react-query-devtools` и подключите Devtools в `main.tsx`.
