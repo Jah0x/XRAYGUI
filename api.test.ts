@@ -1,5 +1,12 @@
 import { expect } from "expect";
-import { getSubscriptionStats, createXrayUser, getXrayUsers, getNews, createNews, deleteNews } from "./api";
+import {
+  getSubscriptionStats,
+  createXrayUser,
+  getXrayUsers,
+  getNews,
+  createNews,
+  deleteNews,
+} from "./api.ts";
 
 // For testing purposes only
 // This is a simplified test for demonstration
