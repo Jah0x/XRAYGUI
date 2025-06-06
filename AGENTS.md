@@ -34,6 +34,15 @@
 | client/api.ts         | Демо-данные и простые методы API для фронтенда |
 | client/utils.ts       | Простейшие хуки useAuth/useToast |
 | components/ui.tsx     | Минимальные UI-компоненты |
+| components/Card.tsx   | Компонент карточки с неоновой рамкой |
+| components/Button.tsx | Кнопка с вариантами primary/outline |
+| components/Tabs.tsx   | Простая таб-система с подчёркиванием |
+| components/Badge.tsx  | Бейдж для статусов |
+| components/Navbar.tsx | Навигационная панель с NavLink |
+| components/Logo.tsx   | Логотип приложения |
+| apps/frontend/src/index.css | Tailwind стили и базовые правила |
+| tailwind.config.cjs   | Конфигурация Tailwind |
+| postcss.config.js     | Настройки PostCSS и autoprefixer |
 | deploy/nginx.conf     | Пример конфигурации Nginx для продакшена |
 | LOGGING.md            | Инструкция по ведению логов проекта |
 
@@ -125,6 +134,11 @@
 - [СДЕЛАНО] Подключена CDN-версия Tailwind в `theme.css`
 - [СДЕЛАНО] Добавлены стили навигации с переносом элементов
 - [НОВАЯ ЗАДАЧА] Проверить отображение интерфейса на мобильных устройствах
+
+### [2025-06-19]
+- [СДЕЛАНО] Подключен Tailwind через PostCSS и настроена sci-fi тема
+- [СДЕЛАНО] Созданы компоненты Card, Button, Tabs и Badge
+- [СДЕЛАНО] Добавлен Navbar с NavLink и Logo
 
 ---
 

@@ -37,9 +37,11 @@ import {
   Image,
   FileText,
 } from "lucide-react";
+import Button from "~/components/Button";
+import Card from "~/components/Card";
+import Badge from "~/components/Badge";
+import Navbar from "~/components/Navbar";
 import {
-  Button,
-  Card,
   CardContent,
   CardDescription,
   CardFooter,
@@ -76,7 +78,6 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-  Badge,
 } from "~/components/ui";
 
 // Auth wrapper component
@@ -1151,7 +1152,7 @@ function Dashboard() {
   const isAdmin = user?.isAdmin;
 
   return (
-    <div className="container mx-auto p-4 max-w-6xl">
+    <div className="max-w-screen-lg mx-auto px-4 py-6">
       <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
 
       {/* Stats Cards */}
@@ -1368,7 +1369,7 @@ function Profile() {
   const { data: user } = useQuery(["currentUser"], apiClient.getCurrentUser);
 
   return (
-    <div className="container mx-auto p-4 max-w-2xl">
+    <div className="max-w-screen-lg mx-auto px-4 py-6">
       <h1 className="text-2xl font-bold mb-6">Profile</h1>
 
       <Card>
@@ -1420,66 +1421,9 @@ function Profile() {
 // Layout component with navigation
 function Layout({ children }: { children: React.ReactNode }) {
   const auth = useAuth();
-  const location = useLocation();
-  const { data: user } = useQuery(["currentUser"], apiClient.getCurrentUser);
-
   return (
     <div className="min-h-screen bg-background">
-      {auth.status === "authenticated" && (
-        <header className="border-b bg-background">
-          <div className="container mx-auto px-4">
-            <div className="flex h-16 items-center justify-between">
-              <div className="logo-container">
-                <Shield className="h-5 w-5 logo-icon" />
-                <span>X-Ray Core VPN</span>
-              </div>
-
-              <nav className="flex items-center space-x-4">
-                <Link to="/dashboard">
-                  <Button
-                    variant={
-                      location.pathname === "/dashboard" ? "default" : "ghost"
-                    }
-                    size="sm"
-                  >
-                    Dashboard
-                  </Button>
-                </Link>
-                <Link to="/profile">
-                  <Button
-                    variant={
-                      location.pathname === "/profile" ? "default" : "ghost"
-                    }
-                    size="sm"
-                  >
-                    Profile
-                  </Button>
-                </Link>
-                {auth.status === "authenticated" && user?.isAdmin && (
-                  <Link to="/admin">
-                    <Button
-                      variant={
-                        location.pathname === "/admin" ? "default" : "ghost"
-                      }
-                      size="sm"
-                    >
-                      Admin
-                    </Button>
-                  </Link>
-                )}
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => (window.location.href = "/")}
-                >
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Logout
-                </Button>
-              </nav>
-            </div>
-          </div>
-        </header>
-      )}
+      {auth.status === "authenticated" && <Navbar />}
 
       <main className="py-6">{children}</main>
 
@@ -2187,7 +2131,7 @@ function AdminPanel() {
   const [activeTab, setActiveTab] = useState("coupons");
 
   return (
-    <div className="container mx-auto p-4 max-w-6xl">
+    <div className="max-w-screen-lg mx-auto px-4 py-6">
       <h1 className="text-2xl font-bold mb-6">Admin Panel</h1>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">

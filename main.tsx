@@ -9,6 +9,7 @@ const Devtools = React.lazy(() =>
 );
 import App from './App';
 import './theme.css';
+import './apps/frontend/src/index.css';
 
 const queryClient = new QueryClient();
 

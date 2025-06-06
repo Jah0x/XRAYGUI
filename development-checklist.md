@@ -21,6 +21,7 @@
 - Implement offer management system
 - Add admin newsletter functionality
 - Prepare database schema for email verification
+- Tailwind sci-fi theme complete
 
 ## Needs Verification
 
@@ -50,4 +51,7 @@ _Последнее обновление: 2025-06-06_
   - `DATABASE_URL` / `PORT` у бэка  
   - Пример-шаблон `.env.example` обновить.
 
-- [ ] **Prisma migrations**  
+- [ ] **Prisma migrations**
+- [ ] Tailwind “sci-fi” theme  
+  - config, index.css, кастомные компоненты.  
+  - Navbar на NavLink, активная вкладка иконкой/цветом.
