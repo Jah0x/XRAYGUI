@@ -1,0 +1,68 @@
+/* Basic project theme */
+:root {
+  --color-primary: #3b82f6;
+  --color-success: #22c55e;
+  --color-destructive: #ef4444;
+  --color-muted: #6b7280;
+  --background-color: #f9fafb;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background-color: var(--background-color);
+  color: #111;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+.status-badge {
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.status-active {
+  background-color: var(--color-success);
+  color: #fff;
+}
+.status-expired {
+  background-color: var(--color-destructive);
+  color: #fff;
+}
+.status-pending {
+  background-color: var(--color-muted);
+  color: #fff;
+}
+
+button {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.text-muted-foreground {
+  color: var(--color-muted);
+}
+
+.bg-muted {
+  background-color: var(--color-muted);
+  color: #fff;
+}
