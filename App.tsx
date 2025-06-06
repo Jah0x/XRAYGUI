@@ -42,6 +42,8 @@ import Card from "~/components/Card";
 import Badge from "~/components/Badge";
 import Navbar from "~/components/Navbar";
 import PromoCodes from "~/components/PromoCodes";
+import ProfilePage from "./ProfilePage";
+import AdminPanelPage from "./AdminPanel";
 import {
   CardContent,
   CardDescription,
@@ -1339,59 +1341,7 @@ function Dashboard() {
   );
 }
 
-// Profile page
-function Profile() {
-  const { data: user } = useQuery(["currentUser"], apiClient.getCurrentUser);
 
-  return (
-    <div className="max-w-screen-lg mx-auto px-4 py-6">
-      <h1 className="text-2xl font-bold mb-6">Profile</h1>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Account Information</CardTitle>
-          <CardDescription>
-            Update your account details and preferences
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
-            <Input id="name" defaultValue={user?.name || ""} />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" defaultValue="" disabled />
-            <p className="text-xs text-muted-foreground">
-              Email is managed through your account settings
-            </p>
-          </div>
-
-          <Separator className="my-4" />
-
-          <div className="space-y-2">
-            <Label htmlFor="current-password">Current Password</Label>
-            <Input id="current-password" type="password" />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="new-password">New Password</Label>
-            <Input id="new-password" type="password" />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="confirm-password">Confirm New Password</Label>
-            <Input id="confirm-password" type="password" />
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button>Save Changes</Button>
-        </CardFooter>
-      </Card>
-    </div>
-  );
-}
 
 // Layout component with navigation
 function Layout({ children }: { children: React.ReactNode }) {
@@ -2101,63 +2051,7 @@ function AdminNewsletterComponent() {
   );
 }
 
-// Admin Panel
-function AdminPanel() {
-  const [activeTab, setActiveTab] = useState("coupons");
 
-  return (
-    <div className="max-w-screen-lg mx-auto px-4 py-6">
-      <h1 className="text-2xl font-bold mb-6">Admin Panel</h1>
-
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
-          <TabsTrigger value="coupons">Coupons</TabsTrigger>
-          <TabsTrigger value="offers">Offers</TabsTrigger>
-          <TabsTrigger value="users">Users</TabsTrigger>
-          <TabsTrigger value="subscriptions">Subscriptions</TabsTrigger>
-          <TabsTrigger value="newsletter">Newsletter</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="coupons" className="mt-6">
-          <AdminCouponManagement />
-        </TabsContent>
-
-        <TabsContent value="offers" className="mt-6">
-          <AdminOffersManagement />
-        </TabsContent>
-
-        <TabsContent value="users" className="mt-6">
-          <h2 className="text-xl font-semibold mb-4">User Management</h2>
-          <Card>
-            <CardContent className="p-6">
-              <p className="text-muted-foreground">
-                User management features will be implemented in a future update.
-              </p>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="subscriptions" className="mt-6">
-          <h2 className="text-xl font-semibold mb-4">
-            Subscription Management
-          </h2>
-          <Card>
-            <CardContent className="p-6">
-              <p className="text-muted-foreground">
-                Subscription management features will be implemented in a future
-                update.
-              </p>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="newsletter" className="mt-6">
-          <AdminNewsletterComponent />
-        </TabsContent>
-      </Tabs>
-    </div>
-  );
-}
 
 export default function App() {
   return (
@@ -2177,7 +2071,7 @@ export default function App() {
             path="/profile"
             element={
               <RequireAuth>
-                <Profile />
+                <ProfilePage />
               </RequireAuth>
             }
           />
@@ -2185,7 +2079,7 @@ export default function App() {
             path="/admin"
             element={
               <RequireAuth>
-                <AdminPanel />
+                <AdminPanelPage />
               </RequireAuth>
             }
           />

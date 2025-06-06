@@ -154,6 +154,12 @@
 - [СДЕЛАНО] Удалён устаревший CSS из theme.css, иконки и лейаут переведены на Tailwind
 - [НОВАЯ ЗАДАЧА] UI Polish Round 2 (Promo, Profile, Admin, Modals)
 
+
+### [2025-06-21]
+- [СДЕЛАНО] Страницы ProfilePage и AdminPanel подключены в App.tsx
+- [СДЕЛАНО] В AdminPanel добавлены модальные окна CreateCouponModal и CreateOfferModal
+
+
 ---
 
 ## Инструкция для Codex/OpenAI
