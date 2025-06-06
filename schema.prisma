@@ -1,0 +1,190 @@
+model User {
+  id                 String              @id @default(cuid())
+  name               String?
+  handle             String?
+  image              String?
+  email              String?             @unique
+  emailVerified      Boolean             @default(false)
+  isAdmin            Boolean             @default(false)
+  role               String              @default("regular") // regular, tester, VIP
+  telegramId         String?             @unique
+  telegramUsername   String?
+  passwordHash       String? // Stored securely for email auth
+  passwordSalt       String? // For password security
+  subscriptions      Subscription[]
+  createdAt          DateTime            @default(now())
+  tokens             TelegramToken[]
+  payments           Payment[]
+  xrayUsers          XrayUser[] // Link to XrayUser records
+  receivedMessages   Message[]           @relation("receivedMessages")
+  sentMessages       Message[]           @relation("sentMessages")
+  discounts          Discount[] // Discounts applied to this user
+  emailVerifications EmailVerification[]
+  newsletterOptIn    Boolean             @default(true) // For admin newsletters
+  lastLoginAt        DateTime?
+  lastLoginMethod    String? // "email" or "telegram"
+}
+
+model TelegramToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  isUsed    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+model Payment {
+  id             String        @id @default(cuid())
+  amount         Float
+  status         String        @default("pending") // pending, completed, cancelled
+  userId         String
+  user           User          @relation(fields: [userId], references: [id])
+  subscription   Subscription?
+  paymentDetails String? // Could store payment reference or receipt details
+  adminApproved  Boolean       @default(false)
+  adminId        String? // ID of admin who approved/rejected the payment
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model SubscriptionPlan {
+  id          String   @id @default(cuid())
+  name        String
+  duration    String // 7days, 1month, 3months, 6months, 12months
+  price       Float // Price in USD
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model News {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  publishDate DateTime @default(now())
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Message {
+  id          String   @id @default(cuid())
+  content     String
+  targetRole  String? // If set, message is sent to users with this role
+  isRead      Boolean  @default(false)
+  senderId    String
+  sender      User     @relation(name: "sentMessages", fields: [senderId], references: [id])
+  recipientId String
+  recipient   User     @relation(name: "receivedMessages", fields: [recipientId], references: [id])
+  createdAt   DateTime @default(now())
+}
+
+model Discount {
+  id            String    @id @default(cuid())
+  code          String    @unique
+  percentage    Float // Discount percentage (0-100)
+  isActive      Boolean   @default(true)
+  expiresAt     DateTime?
+  userId        String? // If set, discount is only for this user
+  user          User?     @relation(fields: [userId], references: [id])
+  targetRole    String? // If set, discount is for users with this role
+  description   String? // Description of what this coupon/promo offers
+  isGift        Boolean   @default(false) // If true, this is a gift/bonus rather than a discount
+  giftDetails   String? // Details about the gift (e.g., "Free month of service")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  usageCount    Int       @default(0) // Track how many times the code has been used
+  maxUsageCount Int? // Maximum number of times the code can be used (null = unlimited)
+}
+
+model Offer {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  imageUrl    String?
+  price       Float
+  isVisible   Boolean   @default(true)
+  priority    Int       @default(0) // For ordering offers
+  startDate   DateTime?
+  endDate     DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model EmailVerification {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  token     String   @unique
+  expiresAt DateTime
+  userId    String? // Will be set if the user already exists and is verifying a new email
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  isUsed    Boolean  @default(false)
+}
+
+model VpnOption {
+  id          String   @id @default(cuid())
+  name        String
+  price       Float
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model XrayConfig {
+  id              String   @id @default(cuid())
+  serverUrl       String // URL of Xray server
+  accessToken     String // Access token for Xray API
+  configPath      String   @default("/etc/xray/config.json") // Path to config.json
+  defaultInbound  String   @default("default") // Default inbound ID
+  defaultDuration String   @default("1month") // Default subscription duration
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model XrayUser {
+  id             String        @id @default(cuid())
+  email          String        @unique // Email or identifier used in Xray
+  uuid           String        @unique // UUID for Xray user
+  inbound        String // Inbound ID in Xray config
+  subscriptionId String?       @unique // Link to subscription
+  subscription   Subscription? @relation(fields: [subscriptionId], references: [id])
+  userId         String // Link to user
+  user           User          @relation(fields: [userId], references: [id])
+  traffic        XrayTraffic?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model XrayTraffic {
+  id            String   @id @default(cuid())
+  xrayUserId    String   @unique
+  xrayUser      XrayUser @relation(fields: [xrayUserId], references: [id])
+  downloadBytes BigInt   @default(0) // Download traffic in bytes
+  uploadBytes   BigInt   @default(0) // Upload traffic in bytes
+  totalBytes    BigInt   @default(0) // Total traffic in bytes
+  lastUpdated   DateTime @default(now())
+}
+
+model Subscription {
+  id           String    @id @default(cuid())
+  planName     String
+  planDuration String    @default("1month") // 7days, 1month, 3months, 6months, 12months
+  status       String    @default("pending") // active, expired, suspended, pending
+  startDate    DateTime  @default(now())
+  endDate      DateTime
+  ipAddress    String?
+  bandwidth    Float     @default(0) // in GB
+  price        Float     @default(0) // Price in USD
+  userId       String
+  user         User      @relation(fields: [userId], references: [id])
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  payment      Payment?  @relation(fields: [paymentId], references: [id])
+  paymentId    String?   @unique
+  xrayUser     XrayUser? // Link to XrayUser record
+}
