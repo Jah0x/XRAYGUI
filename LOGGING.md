@@ -48,16 +48,6 @@
   ```
 - Отчёт удобно смотреть командой `tail -f logs/test.log`.
 
-## Логи сборки стилей
-
-- При использовании локальной сборки Tailwind CSS можно перенаправлять вывод
-  команды в отдельный файл:
-  ```bash
-  npx tailwindcss -i ./theme.css -o ./public/theme.css --watch \
-    > logs/style.log 2>&1
-  ```
-- Просматривать лог можно командой `tail -f logs/style.log`.
-
 ## Логи React Query
 
 - React Query выводит ошибки и предупреждения в консоль браузера.
