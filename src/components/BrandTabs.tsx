@@ -11,7 +11,7 @@ export interface BrandTabsProps {
 export default function BrandTabs({ tabs, defaultValue, value, onValueChange }: BrandTabsProps) {
   return (
     <Tabs value={value} onValueChange={onValueChange} defaultValue={defaultValue ?? tabs[0]?.value} className="w-full">
-      <TabsList className="mb-4">
+      <TabsList className="mb-4 overflow-x-auto no-scrollbar gap-2 px-2">
         {tabs.map((tab) => (
           <TabsTrigger
             key={tab.value}
