@@ -52,6 +52,13 @@
 | tailwind.config.cjs   | Конфигурация Tailwind |
 | postcss.config.js     | Настройки PostCSS и autoprefixer |
 | LOGGING.md            | Инструкция по ведению логов проекта |
+| apps/frontend/src/components/ui/app-shell.tsx | Базовый лейаут приложения |
+| apps/frontend/src/components/ui/button.tsx | Кнопка с вариантами CVA |
+| apps/frontend/src/components/ui/card.tsx | Карточка с неоновой рамкой |
+| apps/frontend/src/components/ui/input.tsx | Текстовое поле с фокусным кольцом |
+| apps/frontend/src/components/ui/modal.tsx | Модальное окно на Radix с анимацией |
+| apps/frontend/src/components/ui/tabs.tsx | Таб-система Radix |
+| DashboardPage.tsx | Демонстрационная страница дашборда |
 
 ---
 
@@ -161,6 +168,11 @@
 ### [2025-06-22]
 - [СДЕЛАНО] Удалена папка `deploy` и обновлены инструкции в RUN.md и LOGGING.md
 - [НОВАЯ ЗАДАЧА] Подготовить отдельный репозиторий или раздел документации с примерами конфигурации Nginx
+
+### [2025-06-23]
+- [СДЕЛАНО] Добавлены UI-компоненты на базе CVA и Radix (app-shell, button, card, input, modal, tabs)
+- [СДЕЛАНО] Создан DashboardPage для демонстрации нового стиля
+- [НОВАЯ ЗАДАЧА] Перенести существующие страницы на новую библиотеку компонентов
 
 
 ---

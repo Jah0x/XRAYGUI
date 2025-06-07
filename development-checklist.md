@@ -35,8 +35,9 @@
 - Add subscription purchase page
 - Create admin dashboard for payment approvals
 - UI Polish Round 2 (Promo, Profile, Admin, Modals)
+- Перевести страницы на новые компоненты из ui/*
 # Development Checklist  – XRAYGUI
-_Последнее обновление: 2025-06-06_
+_Последнее обновление: 2025-06-23_
 
 ## :rocket:  Critical-Fixes (блокируют запуск)
 
