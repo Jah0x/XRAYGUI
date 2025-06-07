@@ -1,0 +1,12 @@
+[Unit]
+Description=XRAYGUI Service
+After=network.target
+
+[Service]
+Environment="PATH=/usr/bin:/usr/local/bin"
+ExecStart=/usr/bin/node server/index.js
+WorkingDirectory=/opt/XRAYGUI
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -10,6 +10,9 @@ const Devtools = React.lazy(() =>
 import App from './App';
 import './theme.css';
 import './apps/frontend/src/index.css';
+import { setupI18n } from './i18n';
+
+setupI18n();
 
 const queryClient = new QueryClient();
 
