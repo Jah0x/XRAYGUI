@@ -51,7 +51,6 @@
 | apps/frontend/src/index.css | Tailwind стили и базовые правила |
 | tailwind.config.cjs   | Конфигурация Tailwind |
 | postcss.config.js     | Настройки PostCSS и autoprefixer |
-| deploy/nginx.conf     | Пример конфигурации Nginx для продакшена |
 | LOGGING.md            | Инструкция по ведению логов проекта |
 
 ---
@@ -158,6 +157,10 @@
 ### [2025-06-21]
 - [СДЕЛАНО] Страницы ProfilePage и AdminPanel подключены в App.tsx
 - [СДЕЛАНО] В AdminPanel добавлены модальные окна CreateCouponModal и CreateOfferModal
+
+### [2025-06-22]
+- [СДЕЛАНО] Удалена папка `deploy` и обновлены инструкции в RUN.md и LOGGING.md
+- [НОВАЯ ЗАДАЧА] Подготовить отдельный репозиторий или раздел документации с примерами конфигурации Nginx
 
 
 ---
