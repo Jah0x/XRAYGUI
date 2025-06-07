@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BrandTabs from './src/components/BrandTabs';
 import BrandButton from './src/components/BrandButton';
+import EmptyState from './components/EmptyState';
 import {
   Dialog,
   DialogContent,
@@ -28,6 +29,7 @@ export default function AdminPanel() {
               </DialogHeader>
             </DialogContent>
           </Dialog>
+          <EmptyState>No coupons found …</EmptyState>
         </div>
       ),
     },
@@ -44,11 +46,20 @@ export default function AdminPanel() {
               </DialogHeader>
             </DialogContent>
           </Dialog>
+          <EmptyState>No offers found …</EmptyState>
         </div>
       ),
     },
-    { label: 'Users', value: 'users', content: <div>Users content</div> },
-    { label: 'Subscriptions', value: 'subscriptions', content: <div>Subscriptions content</div> },
+    {
+      label: 'Users',
+      value: 'users',
+      content: <EmptyState>No users found …</EmptyState>,
+    },
+    {
+      label: 'Subscriptions',
+      value: 'subscriptions',
+      content: <EmptyState>No subscriptions found …</EmptyState>,
+    },
     { label: 'Newsletter', value: 'newsletter', content: <div>Newsletter content</div> },
   ];
 

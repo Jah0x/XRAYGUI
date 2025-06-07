@@ -51,9 +51,12 @@
 | src/components/BrandButton.tsx | Кнопка с цветом brand |
 | src/components/BrandCard.tsx | Карточка с тонкой рамкой |
 | src/components/BrandTabs.tsx | Вкладки с выделением brand |
-| src/layouts/AppShell.tsx | Основной лейаут с Sidebar и MobileNav |
+| src/layouts/AppShell.tsx | Основной лейаут с Sidebar, MobileTopBar и BottomNav |
 | components/ui/sidebar.tsx | Боковая панель навигации |
-| components/ui/mobile-nav.tsx | Нижняя мобильная навигация |
+| components/ui/mobile-nav.tsx | Нижняя мобильная навигация (устаревший вариант) |
+| components/ui/MobileTopBar.tsx | Мобильный верхний бар |
+| components/ui/BottomNav.tsx | Нижняя навигация с иконками |
+| components/EmptyState.tsx | Карточка-заглушка для пустого списка |
 | apps/frontend/src/index.css | Tailwind стили и базовые правила |
 | tailwind.config.cjs   | Конфигурация Tailwind |
 | postcss.config.js     | Настройки PostCSS и autoprefixer |
@@ -189,6 +192,13 @@
 - [СДЕЛАНО] Создан лейаут AppShell с Sidebar и MobileNav
 - [СДЕЛАНО] Очищен index.css и добавлен цвет brand в Tailwind config
 - [НОВАЯ ЗАДАЧА] Проверить новые страницы после рефакторинга
+
+### [2025-06-26]
+- [СДЕЛАНО] Добавлены MobileTopBar и BottomNav для мобильного интерфейса
+- [СДЕЛАНО] Обновлён AppShell с новым расположением main и футером
+- [СДЕЛАНО] Создан компонент EmptyState и подключен в AdminPanel
+- [СДЕЛАНО] TabsList получил горизонтальный скролл через no-scrollbar
+- [НОВАЯ ЗАДАЧА] Проверить Lighthouse на мобильных устройствах (цель ≥90)
 
 
 ---
