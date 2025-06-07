@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=General+Sans:wght@400;600&family=Inter:wght@400;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,6 +7,6 @@
 @layer base {
   body {
     @apply bg-surface text-onSurface font-sans;
-    font-family: 'Inter', 'Roboto', sans-serif;
+    font-family: 'General Sans', 'Inter', sans-serif;
   }
 }

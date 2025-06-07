@@ -1,18 +1,26 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./index.html', './**/*.tsx'],
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
+module.exports = {
+  content: ['apps/frontend/src/**/*.{ts,tsx,html}'],
+  darkMode: 'class',
   theme: {
+    container: { center: true, padding: '1rem' },
     extend: {
+      fontFamily: { sans: ['"General Sans"', ...fontFamily.sans] },
       colors: {
-        primary: { DEFAULT: '#3B82F6', dark: '#1E40AF' },
-        surface: '#0F172A',
-        onSurface: '#FFFFFF',
+        surface:  '#0B1120',
+        surface2: '#171E31',
+        primary:  { DEFAULT: '#3B82F6', glow: '#60A5FA' },
+        accent:   '#C084FC',
       },
-      fontFamily: {
-        sans: ['Inter', 'Roboto', 'sans-serif'],
+      boxShadow: {
+        glass: 'inset 0 0 0 1px rgba(255,255,255,0.05), 0 6px 30px rgba(0,0,0,0.35)',
       },
     },
   },
-  plugins: [],
-}
-
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
+};
