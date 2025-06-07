@@ -68,6 +68,21 @@
 | apps/frontend/src/components/ui/modal.tsx | Модальное окно на Radix с анимацией |
 | apps/frontend/src/components/ui/tabs.tsx | Таб-система Radix |
 | DashboardPage.tsx | Демонстрационная страница дашборда |
+| server/index.ts | Express-сервер для отдачи статики |
+| Dockerfile | Сборка и запуск через nginx |
+| deploy/xraygui-update.sh | Скрипт обновления и сборки |
+| deploy/xraygui.service | systemd unit для сервиса |
+| i18n.ts | Инициализация i18next |
+| locales/en/translation.json | Английские переводы |
+| locales/ru/translation.json | Русские переводы |
+| components/ThemeSwitcher.tsx | Переключатель тёмной/светлой темы |
+| components/LanguageSwitcher.tsx | Селектор языка |
+| client/theme.ts | Хук useTheme |
+| vitest.config.ts | Конфигурация vitest |
+| tests/DashboardPage.test.tsx | Снапшот-тест страницы дашборда |
+| .github/workflows/ci.yml | CI c lint/test/build |
+| vite-env.d.ts | Типы переменных окружения |
+| .eslintrc.cjs | Настройки ESLint |
 
 ---
 
@@ -199,6 +214,13 @@
 - [СДЕЛАНО] Создан компонент EmptyState и подключен в AdminPanel
 - [СДЕЛАНО] TabsList получил горизонтальный скролл через no-scrollbar
 - [НОВАЯ ЗАДАЧА] Проверить Lighthouse на мобильных устройствах (цель ≥90)
+
+### [2025-06-27]
+- [СДЕЛАНО] Добавлены ESLint и CI с vitest
+- [СДЕЛАНО] Создан Dockerfile и express-сервер
+- [СДЕЛАНО] Реализованы переключатели темы и языка, добавлены переводы
+- [СДЕЛАНО] Настроен vitest с тестом DashboardPage
+- [СДЕЛАНО] Создан скрипт деплоя `xraygui-update.sh` и unit-файл systemd
 
 
 ---
