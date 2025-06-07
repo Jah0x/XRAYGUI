@@ -16,7 +16,7 @@
 
 ## Логи продакшена
 
-- Nginx по умолчанию пишет логи в `/var/log/nginx/xraygui_access.log` и `/var/log/nginx/xraygui_error.log` (см. `deploy/nginx.conf`).
+- Nginx по умолчанию пишет логи в `/var/log/nginx/xraygui_access.log` и `/var/log/nginx/xraygui_error.log` (конфигурацию создавайте самостоятельно).
 - Просмотр логов:
   ```bash
   sudo tail -f /var/log/nginx/xraygui_error.log
@@ -68,3 +68,6 @@
 
 ### 2025-06-18
 - Обновлен файл `theme.css`: подключен Tailwind CDN и добавлены стили навигации.
+
+### 2025-06-22
+- Удалена папка `deploy` с примером конфигурации Nginx, описание логов скорректировано.

@@ -26,7 +26,7 @@
    npm run build
    ```
 2. Скопируйте содержимое `dist` на сервер, например в `/opt/XRAYGUI/dist`.
-3. Настройте Nginx, добавив конфигурацию из файла `deploy/nginx.conf`.
+3. Настройте Nginx, создав конфигурацию вручную (пример был в `deploy/nginx.conf`).
 4. Перезапустите Nginx и перейдите по адресу, указанному в `server_name`.
 
 Если страница пустая, убедитесь, что директория `dist` содержит файлы после сборки и что в конфигурации Nginx верно указан путь `root`.
@@ -38,9 +38,10 @@
    ```bash
    sudo apt install nginx
    ```
-2. Скопируйте `deploy/nginx.conf` в `/etc/nginx/sites-available/xraygui` и создайте ссылку:
+2. Создайте файл `/etc/nginx/sites-available/xraygui` с вашей конфигурацией Nginx
+   (ранее использовался `deploy/nginx.conf`) и сделайте ссылку:
    ```bash
-   sudo cp deploy/nginx.conf /etc/nginx/sites-available/xraygui
+   sudo nano /etc/nginx/sites-available/xraygui
    sudo ln -s /etc/nginx/sites-available/xraygui /etc/nginx/sites-enabled/xraygui
    ```
 3. Убедитесь, что путь `root` в конфигурации указывает на папку с собранным фронтендом, например `/opt/XRAYGUI/dist`.
