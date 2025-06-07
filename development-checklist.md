@@ -36,6 +36,10 @@
 - Create admin dashboard for payment approvals
 - UI Polish Round 2 (Promo, Profile, Admin, Modals)
 - Перевести страницы на новые компоненты из ui/*
+- [ ] **Shadcn UI Dark theme** интегрирована
+- [ ] BrandButton / BrandCard / BrandTabs подключены
+- [ ] Старый custom CSS удалён
+- [ ] Build OK, eslint OK
 # Development Checklist  – XRAYGUI
 _Последнее обновление: 2025-06-23_
 

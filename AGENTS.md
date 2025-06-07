@@ -48,6 +48,12 @@
 | components/CreateOfferModal.tsx | Модал создания предложения |
 | ProfilePage.tsx | Страница профиля пользователя |
 | AdminPanel.tsx | Админ-панель с табами |
+| src/components/BrandButton.tsx | Кнопка с цветом brand |
+| src/components/BrandCard.tsx | Карточка с тонкой рамкой |
+| src/components/BrandTabs.tsx | Вкладки с выделением brand |
+| src/layouts/AppShell.tsx | Основной лейаут с Sidebar и MobileNav |
+| components/ui/sidebar.tsx | Боковая панель навигации |
+| components/ui/mobile-nav.tsx | Нижняя мобильная навигация |
 | apps/frontend/src/index.css | Tailwind стили и базовые правила |
 | tailwind.config.cjs   | Конфигурация Tailwind |
 | postcss.config.js     | Настройки PostCSS и autoprefixer |
@@ -177,6 +183,12 @@
 ### [2025-06-24]
 - [СДЕЛАНО] Добавлен цвет `onSurface` в `tailwind.config.cjs` для корректной сборки стилей
 - [НОВАЯ ЗАДАЧА] Проверить остальные классы Tailwind на наличие устаревших значений
+
+### [2025-06-25]
+- [СДЕЛАНО] Подключена shadcn/ui с тёмным пресетом, добавлены BrandButton, BrandCard и BrandTabs
+- [СДЕЛАНО] Создан лейаут AppShell с Sidebar и MobileNav
+- [СДЕЛАНО] Очищен index.css и добавлен цвет brand в Tailwind config
+- [НОВАЯ ЗАДАЧА] Проверить новые страницы после рефакторинга
 
 
 ---
