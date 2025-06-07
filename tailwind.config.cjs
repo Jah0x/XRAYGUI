@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         surface:  '#0B1120',
         surface2: '#171E31',
+        onSurface: '#E5E7EB',
         primary:  { DEFAULT: '#3B82F6', glow: '#60A5FA' },
         accent:   '#C084FC',
       },
