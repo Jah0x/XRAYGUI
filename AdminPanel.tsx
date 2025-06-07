@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import Tabs from './components/Tabs';
-
-import Button from './components/Button';
-import CreateCouponModal from './components/CreateCouponModal';
-import CreateOfferModal from './components/CreateOfferModal';
+import BrandTabs from './src/components/BrandTabs';
+import BrandButton from './src/components/BrandButton';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 export default function AdminPanel() {
   const [tab, setTab] = useState<'coupons' | 'offers' | 'users' | 'subscriptions' | 'newsletter'>('coupons');
@@ -11,36 +14,47 @@ export default function AdminPanel() {
   const [offerOpen, setOfferOpen] = useState(false);
 
 
-  const items = [
-    { label: 'Coupons', value: 'coupons' },
-    { label: 'Offers', value: 'offers' },
-    { label: 'Users', value: 'users' },
-    { label: 'Subscriptions', value: 'subscriptions' },
-    { label: 'Newsletter', value: 'newsletter' },
+  const tabs = [
+    {
+      label: 'Coupons',
+      value: 'coupons',
+      content: (
+        <div className="space-y-4">
+          <BrandButton onClick={() => setCouponOpen(true)}>Create Coupon</BrandButton>
+          <Dialog open={couponOpen} onOpenChange={setCouponOpen}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Create Coupon</DialogTitle>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
+        </div>
+      ),
+    },
+    {
+      label: 'Offers',
+      value: 'offers',
+      content: (
+        <div className="space-y-4">
+          <BrandButton onClick={() => setOfferOpen(true)}>Create Offer</BrandButton>
+          <Dialog open={offerOpen} onOpenChange={setOfferOpen}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Create Offer</DialogTitle>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
+        </div>
+      ),
+    },
+    { label: 'Users', value: 'users', content: <div>Users content</div> },
+    { label: 'Subscriptions', value: 'subscriptions', content: <div>Subscriptions content</div> },
+    { label: 'Newsletter', value: 'newsletter', content: <div>Newsletter content</div> },
   ];
 
   return (
     <div className="max-w-screen-lg mx-auto p-4">
-      <Tabs items={items} value={tab} onChange={setTab} />
-      
-      {tab === 'coupons' && (
-        <div className="space-y-4">
-          <Button onClick={() => setCouponOpen(true)}>Create Coupon</Button>
-          <CreateCouponModal isOpen={couponOpen} onClose={() => setCouponOpen(false)} />
-        </div>
-      )}
-
-      {tab === 'offers' && (
-        <div className="space-y-4">
-          <Button onClick={() => setOfferOpen(true)}>Create Offer</Button>
-          <CreateOfferModal isOpen={offerOpen} onClose={() => setOfferOpen(false)} />
-        </div>
-      )}
-
-
-      {tab === 'users' && <div>Users content</div>}
-      {tab === 'subscriptions' && <div>Subscriptions content</div>}
-      {tab === 'newsletter' && <div>Newsletter content</div>}
+      <BrandTabs tabs={tabs} value={tab} onValueChange={setTab} />
     </div>
   );
 }
